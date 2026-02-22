@@ -33,3 +33,25 @@ UTCS:
 
 ```bash
 pip install utcs
+```
+
+## Example Python
+```bash
+from datetime import datetime, timezone
+from utcs.core import utc_to_utcs
+
+utc = datetime(2026, 2, 18, 18, 35, 36, tzinfo=timezone.utc)
+print(utc_to_utcs(utc))
+```
+
+## Output
+```bash
++0008.02.047.11800
+```
+## CCSDS Encoding Example Python
+```bash
+from utcs.core import encode_cuc, utc_to_tt_seconds
+
+delta = utc_to_tt_seconds(utc)
+packet_bytes = encode_cuc(delta, coarse_bytes=4, fine_bytes=2)
+```
